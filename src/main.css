@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+.Home {
+  display: flex;
+  justify-content: space-evenly;
+}
+.Text {
+  width: 50%;
+}
+.Text h1 {
+  font-size: 40px;
+  text-transform: uppercase;
+  text-align: left;
+  line-height: 50px;
+}
+.Text p {
+  font-size: 20px;
+  color: maroon;
+}
+.Items {
+  background-color: aqua;
+  height: 200px;
+}
+.footer {
+  background-color: gray;
+  height: 20vh;
+}
