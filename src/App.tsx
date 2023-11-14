@@ -7,6 +7,7 @@ const App = () => {
   return (
     <Box>
       <section className="Home">
+        {/* body part */}
         <div className="Text">
           <h1>
             Enjoy With Us, Make A Fun, Do Something special ...{" "}
@@ -19,16 +20,26 @@ const App = () => {
             animi enim!
           </p>
 
-          <Button variant="outlined" color="error">
+          <Button
+            variant="outlined"
+            color="error"
+            sx={{ ":active": { bgcolor: "pink" } }}
+          >
             Shop Now
             <AddShoppingCart sx={{ fontSize: 30, color: "#8b0000" }} />
           </Button>
         </div>
         <div>
-          <img src="https://png.pngtree.com/element_pic/00/16/08/1457b018a9ba86f.jpg"></img>
+          <img
+            src="https://www.pngall.com/wp-content/uploads/2016/04/Shopping-High-Quality-PNG.png"
+            alt="girlWithcart"
+            width={400}
+          ></img>
         </div>
       </section>
+      {/* Items */}
       <div className="Items"></div>
+      {/* Footer */}
       <footer className="footer"></footer>
     </Box>
   );
