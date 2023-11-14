@@ -40,7 +40,27 @@ const App = () => {
       {/* Items */}
       <div className="Items"></div>
       {/* Footer */}
-      <footer className="footer"></footer>
+      <footer className="footer">
+        {/* for text */}
+        <div className="footerText">
+          <p>Thank for shopping from our website</p>
+          <p>
+            &copy; CopyRight... Flexiable &hearts; and Believable &diams;
+            Website
+          </p>
+          <p>100+ products can get "&trade;"</p>
+        </div>
+        {/* for address */}
+        <div className="footerAddress">
+          <address>
+            &#64; No.65, DragonHome Street, NewYork:
+            <p> &#128222; 09-253-125-63</p>
+            <p>
+              email: <a href="#">shopwithus22&#64;gamil.com</a>
+            </p>
+          </address>
+        </div>
+      </footer>
     </Box>
   );
 };
