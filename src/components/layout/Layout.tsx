@@ -58,13 +58,14 @@ const Layout = ({ children }: Props) => {
         <Link to="/add-cart">
           <AddShoppingCartIcon sx={{ fontSize: 50, color: "#8b0000" }} />
         </Link>
-
-        <Button
-          sx={{ bgcolor: "#8b0000", ":hover": { bgcolor: "pink" } }}
-          variant="contained"
-        >
-          Signup
-        </Button>
+        <Link to="/signup">
+          <Button
+            sx={{ bgcolor: "#8b0000", ":hover": { bgcolor: "pink" } }}
+            variant="contained"
+          >
+            Signup
+          </Button>
+        </Link>
       </Box>
       {/* Content */}
       <Box sx={{ display: "flex", justifyContent: "center", pt: 5 }}>
