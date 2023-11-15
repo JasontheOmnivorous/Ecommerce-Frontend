@@ -5,6 +5,7 @@ import AboutPage from "../pages/about/AboutPage";
 import AddToCart from "../pages/addToCart/AddToCart";
 import ContactPage from "../pages/contact/ContactPage";
 import ItemListPage from "../pages/item-list/ItemListPage";
+import Signup from "../form/SignUp";
 
 const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ const AppRouter = () => {
           <Route path="/item-list" Component={ItemListPage} />
           <Route path="/contact" Component={ContactPage} />
           <Route path="/add-cart" Component={AddToCart} />
+          <Route path="/signup" Component={Signup} />
         </Routes>
       </Layout>
     </BrowserRouter>
