@@ -3,10 +3,10 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import PhoneForwardedIcon from "@mui/icons-material/PhoneForwarded";
-import StoreIcon from "@mui/icons-material/Store";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import Logo from "./../../assets/logo.jpg";
 
 interface Props {
   children: ReactNode;
@@ -33,10 +33,7 @@ const Layout = ({ children }: Props) => {
             alignItems: "center",
           }}
         >
-          <StoreIcon sx={{ fontSize: 80, color: "#8b0000" }} />
-          <Typography sx={{ fontWeight: 10, userSelect: "none" }} variant="h5">
-            Shop With<br></br>Us
-          </Typography>
+          <img src={Logo} alt="logo" style={{ width: 130, height: 130 }} />
         </Box>
 
         <Link to="/">
