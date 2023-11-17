@@ -4,8 +4,9 @@ import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import PhoneForwardedIcon from "@mui/icons-material/PhoneForwarded";
 import { Box, Button } from "@mui/material";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
+import Signup from "../form/SignUp";
 import Logo from "./../../assets/logo.jpg";
 
 interface Props {
@@ -13,6 +14,8 @@ interface Props {
 }
 
 const Layout = ({ children }: Props) => {
+  const [open, setOpen] = useState<boolean>(false);
+
   return (
     <Box>
       {/* Navbar */}
@@ -55,14 +58,14 @@ const Layout = ({ children }: Props) => {
         <Link to="/add-cart">
           <AddShoppingCartIcon sx={{ fontSize: 50, color: "#8b0000" }} />
         </Link>
-        <Link to="/signup">
-          <Button
-            sx={{ bgcolor: "#8b0000", ":hover": { bgcolor: "pink" } }}
-            variant="contained"
-          >
-            Signup
-          </Button>
-        </Link>
+        <Button
+          onClick={() => setOpen(true)}
+          sx={{ bgcolor: "#8b0000", ":hover": { bgcolor: "pink" } }}
+          variant="contained"
+        >
+          Signup
+        </Button>
+        <Signup open={open} setOpen={setOpen} />
       </Box>
       {/* Content */}
       <Box sx={{ display: "flex", justifyContent: "center", pt: 5 }}>

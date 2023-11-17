@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import WelcomePic from "./assets/welcome_pic.jpg";
 import "./main.css";
+
 const App = () => {
   return (
     <Box>
