@@ -5,19 +5,19 @@ import AboutPage from "../pages/about/AboutPage";
 import AddToCart from "../pages/addToCart/AddToCart";
 import ContactPage from "../pages/contact/ContactPage";
 import ItemListPage from "../pages/item-list/ItemListPage";
+import LandingPage from "../pages/landing/LandingPage";
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" Component={App} />
-          <Route path="/about" Component={AboutPage} />
-          <Route path="/item-list" Component={ItemListPage} />
-          <Route path="/contact" Component={ContactPage} />
-          <Route path="/add-cart" Component={AddToCart} />
-        </Routes>
-      </Layout>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<Layout><App /></Layout>} />
+        <Route path="/about" element={<Layout><AboutPage /></Layout>} />
+        <Route path="/item-list" element={<Layout><ItemListPage /></Layout>} />
+        <Route path="/add-cart" element={<Layout><AddToCart /></Layout>} />
+        <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
+      </Routes>
     </BrowserRouter>
   );
 };

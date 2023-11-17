@@ -1,4 +1,5 @@
 import GoogleIcon from "@mui/icons-material/Google";
+import { useNavigate } from "react-router-dom";
 import SignInPic from "./../../assets/signin_pic.jpg";
 
 import { LinkedIn, Twitter } from "@mui/icons-material";
@@ -29,6 +30,7 @@ const Signup = ({ open, setOpen }: Props) => {
     passwordConfirm: "",
   });
   const [loginOpen, setLoginOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleSignup = async () => {
     try {
@@ -42,6 +44,7 @@ const Signup = ({ open, setOpen }: Props) => {
       const token = await responseObj.json();
       // store responded token inside localstorage for further usage
       localStorage.setItem("authToken", token.token);
+      navigate("/home"); // nevigate the user to the home page after signing up
     } catch (err) {
       return console.log(err);
     }

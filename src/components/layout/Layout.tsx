@@ -39,7 +39,7 @@ const Layout = ({ children }: Props) => {
           <img src={Logo} alt="logo" style={{ width: 130, height: 130 }} />
         </Box>
 
-        <Link to="/">
+        <Link to="/home">
           <HomeIcon sx={{ fontSize: 60, color: "#8b0000" }} />
         </Link>
 
