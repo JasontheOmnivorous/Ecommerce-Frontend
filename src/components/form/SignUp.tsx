@@ -1,5 +1,5 @@
 import GoogleIcon from "@mui/icons-material/Google";
-import SignInPic from "./../assets/signin_pic.jpg";
+import SignInPic from './../../assets/signin_pic.jpg';
 
 import { LinkedIn, Twitter } from "@mui/icons-material";
 import {
