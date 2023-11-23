@@ -10,6 +10,7 @@ import {
 import { useState } from "react";
 import { config } from "../../config/config";
 import { LoginType } from "../../types/auth";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   loginOpen: boolean;
@@ -18,6 +19,7 @@ interface Props {
 
 const Login = ({ loginOpen, setLoginOpen }: Props) => {
   const [login, setLogin] = useState<LoginType>({ email: "", password: "" });
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -30,6 +32,7 @@ const Login = ({ loginOpen, setLoginOpen }: Props) => {
       });
       const token = await responseObj.json();
       localStorage.setItem("authToken", token.token);
+      navigate("/home");
     } catch (err) {
       return console.log(err);
     }
