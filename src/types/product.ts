@@ -1,12 +1,11 @@
 export interface Product extends CreateProductPayload {
-  id: number;
-  isArchived: boolean;
+  _id: string;
 }
 
 export interface CreateProductPayload {
   name: string;
-  price: string;
-  coverImage: string;
+  price: number;
+  coverImage?: string;
   description: string;
 }
 

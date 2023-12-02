@@ -2,6 +2,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import StarPurple500Icon from "@mui/icons-material/StarPurple500";
 import { Box, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 import WelcomePic from "./assets/welcome_pic.jpg";
 import "./main.css";
 
@@ -24,14 +25,16 @@ const App = () => {
             seamless shopping experience!
             <StarPurple500Icon />
           </Typography>
-          <Button
-            variant="outlined"
-            color="error"
-            sx={{ ":active": { bgcolor: "pink", mt: 5 } }}
-          >
-            start exploring
-            <ArrowForwardIcon sx={{ fontSize: 30, color: "#8b0000" }} />
-          </Button>
+          <Link to="/item-list">
+            <Button
+              variant="outlined"
+              color="error"
+              sx={{ ":active": { bgcolor: "pink", mt: 5 } }}
+            >
+              start exploring
+              <ArrowForwardIcon sx={{ fontSize: 30, color: "#8b0000" }} />
+            </Button>
+          </Link>
         </Box>
         <div>
           <img
@@ -41,8 +44,6 @@ const App = () => {
           ></img>
         </div>
       </section>
-      {/* Items */}
-      <Box className="Items"></Box>
       {/* Footer */}
       <footer className="footer">
         {/* for text */}
