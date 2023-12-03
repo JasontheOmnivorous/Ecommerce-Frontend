@@ -18,6 +18,9 @@ export const getProducts = createAsyncThunk(
           authorization: `Bearer ${token}`,
         },
       });
+
+      if (!response.ok) throw new Error("Fail to fetch the products!");
+      
       const data = await response.json();
       console.log("thunk data", data.data);
       thunkApi.dispatch(setProducts(data.data));
