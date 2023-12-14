@@ -1,10 +1,19 @@
 import { AddCircle, MonetizationOn, RemoveCircle } from "@mui/icons-material";
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
-import { useAppSelector } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { updateQuantity } from "../../store/slices/cartSlice";
 
 const CartPage = () => {
   const cartItems = useAppSelector((store) => store.cart.items);
-  console.log(cartItems.map((item) => item));
+  const dispatch = useAppDispatch();
+
+  const handleIncrease = (_id: string, quantity: number) => {
+    dispatch(updateQuantity({ _id, quantity }));
+  };
+
+  const handleDecrease = (_id: string, quantity: number) => {
+    dispatch(updateQuantity({ _id, quantity }));
+  };
 
   if (!cartItems) return null;
 
@@ -20,7 +29,7 @@ const CartPage = () => {
             }}
             key={item._id}
           >
-            <Card elevation={3} sx={{ width: 400, height: 400 }}>
+            <Card elevation={3} sx={{ width: 600, height: 400 }}>
               <CardContent
                 sx={{
                   display: "flex",
@@ -51,11 +60,17 @@ const CartPage = () => {
                 alignItems: "center",
               }}
             >
-              <Button sx={{ mr: 2 }}>
+              <Button
+                onClick={() => handleIncrease(item._id, item.quantity + 1)}
+                sx={{ mr: 2 }}
+              >
                 <AddCircle sx={{ fontSize: 50, color: "green" }} />
               </Button>
               <Typography sx={{ mr: 2 }}>{item.quantity}</Typography>
-              <Button sx={{ mr: 2 }}>
+              <Button
+                onClick={() => handleDecrease(item._id, item.quantity - 1)}
+                sx={{ mr: 2 }}
+              >
                 <RemoveCircle sx={{ fontSize: 50, color: "crimson" }} />
               </Button>
             </Box>
