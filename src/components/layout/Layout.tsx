@@ -1,9 +1,9 @@
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { ShoppingCart } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import PhoneForwardedIcon from "@mui/icons-material/PhoneForwarded";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
 import Signup from "../form/SignUp";
@@ -55,8 +55,27 @@ const Layout = ({ children }: Props) => {
           <PhoneForwardedIcon sx={{ fontSize: 50, color: "#8b0000" }} />
         </Link>
 
-        <Link to="/add-cart">
-          <AddShoppingCartIcon sx={{ fontSize: 50, color: "#8b0000" }} />
+        <Link style={{ textDecoration: "none" }} to="/cart">
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <ShoppingCart sx={{ fontSize: 50, color: "#8b0000" }} />
+            <Typography
+              sx={{
+                bgcolor: "#8b0000",
+                color: "white",
+                borderRadius: "50%",
+                textAlign: "center",
+                p: 0.2,
+              }}
+            >
+              1
+            </Typography>
+          </Box>
         </Link>
         <Button
           onClick={() => setOpen(true)}

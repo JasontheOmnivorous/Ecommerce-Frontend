@@ -1,5 +1,5 @@
 import { MonetizationOn } from "@mui/icons-material";
-import { Box, Card, Typography } from "@mui/material";
+import { Box, Button, Card, CardActions, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 
@@ -12,25 +12,33 @@ const Item = () => {
     <Card
       elevation={3}
       sx={{
-        width: 600,
-        height: 400,
+        width: 800,
+        height: 700,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        p: 3,
+        p: 10,
       }}
     >
       <Typography sx={{ p: 2 }} variant="h4">
         {product?.name}
       </Typography>
+      <img
+        style={{ width: 300, height: 300, margin: 20 }}
+        src={product?.coverImage || ""}
+        alt="product-image"
+      />
       <Typography sx={{ p: 2 }}>{product?.description}</Typography>
       <Box
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <MonetizationOn sx={{ fontSize: 30, color: "green" }} />
-        <Typography>{product?.price}</Typography>
+        <Typography sx={{ fontWeight: "bold" }}>{product?.price}</Typography>
       </Box>
+      <CardActions sx={{ m: 2 }}>
+        <Button variant="contained">add to cart</Button>
+      </CardActions>
     </Card>
   );
 };

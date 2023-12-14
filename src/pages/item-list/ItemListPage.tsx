@@ -15,10 +15,15 @@ const ItemListPage = () => {
 
   return (
     <Box
-      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
     >
       {products?.map((product) => (
-        <ItemCard key={product.id} product={product} />
+        <ItemCard key={product._id} product={product} />
       ))}
     </Box>
   );

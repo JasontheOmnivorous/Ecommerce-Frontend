@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "../App";
 import Layout from "../components/layout/Layout";
 import AboutPage from "../pages/about/AboutPage";
-import AddToCart from "../pages/addToCart/AddToCart";
+import CartPage from "../pages/addToCart/CartPage";
 import ContactPage from "../pages/contact/ContactPage";
 import ItemListPage from "../pages/item-list/ItemListPage";
 import LandingPage from "../pages/landing/LandingPage";
@@ -46,10 +46,10 @@ const AppRouter = () => {
           }
         />
         <Route
-          path="/add-cart"
+          path="/cart"
           element={
             <Layout>
-              <AddToCart />
+              <CartPage />
             </Layout>
           }
         />

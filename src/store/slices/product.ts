@@ -20,9 +20,8 @@ export const getProducts = createAsyncThunk(
       });
 
       if (!response.ok) throw new Error("Fail to fetch the products!");
-      
+
       const data = await response.json();
-      console.log("thunk data", data.data);
       thunkApi.dispatch(setProducts(data.data));
     } catch (err) {
       console.error(err);
