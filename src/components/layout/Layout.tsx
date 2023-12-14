@@ -6,6 +6,7 @@ import PhoneForwardedIcon from "@mui/icons-material/PhoneForwarded";
 import { Box, Button, Typography } from "@mui/material";
 import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../store/hooks";
 import Signup from "../form/SignUp";
 import Logo from "./../../assets/logo.jpg";
 
@@ -15,6 +16,13 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
+  const cartItems = useAppSelector((store) => store.cart.items);
+
+  const calcQauntity = () => {
+    let quantity = 0;
+    cartItems.forEach((item) => (quantity += item.quantity));
+    return quantity;
+  };
 
   return (
     <Box>
@@ -73,7 +81,7 @@ const Layout = ({ children }: Props) => {
                 p: 0.2,
               }}
             >
-              1
+              {calcQauntity()}
             </Typography>
           </Box>
         </Link>

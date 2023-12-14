@@ -1,12 +1,20 @@
 import { MonetizationOn } from "@mui/icons-material";
 import { Box, Button, Card, CardActions, Typography } from "@mui/material";
-import { useParams } from "react-router-dom";
-import { useAppSelector } from "../../store/hooks";
+import { useNavigate, useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { addToCart } from "../../store/slices/cartSlice";
 
 const Item = () => {
   const { id } = useParams();
   const products = useAppSelector((store) => store.product.items);
   const product = products.find((item) => item._id === String(id));
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart({ id, quantity: 1 }));
+    navigate("/item-list");
+  };
 
   return (
     <Card
@@ -37,7 +45,9 @@ const Item = () => {
         <Typography sx={{ fontWeight: "bold" }}>{product?.price}</Typography>
       </Box>
       <CardActions sx={{ m: 2 }}>
-        <Button variant="contained">add to cart</Button>
+        <Button onClick={handleAddToCart} variant="contained">
+          add to cart
+        </Button>
       </CardActions>
     </Card>
   );
