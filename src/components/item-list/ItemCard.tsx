@@ -1,10 +1,10 @@
 import { MonetizationOn } from "@mui/icons-material";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Product } from "../../types/product";
+import { CartItem } from "../../types/cart";
 
 interface Props {
-  product: Product;
+  product: CartItem;
 }
 
 const ItemCard = ({ product }: Props) => {

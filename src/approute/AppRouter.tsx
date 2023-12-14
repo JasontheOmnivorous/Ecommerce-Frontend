@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "../App";
 import Layout from "../components/layout/Layout";
 import AboutPage from "../pages/about/AboutPage";
-import CartPage from "../pages/addToCart/CartPage";
+import CartPage from "../pages/cart/CartPage";
 import ContactPage from "../pages/contact/ContactPage";
 import ItemListPage from "../pages/item-list/ItemListPage";
 import LandingPage from "../pages/landing/LandingPage";

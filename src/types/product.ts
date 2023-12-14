@@ -9,7 +9,7 @@ export interface CreateProductPayload {
   description: string;
 }
 
-export interface InitialProductState {
+export interface ProductSlice {
   items: Product[];
   isLoading: boolean;
   error: Error | null;

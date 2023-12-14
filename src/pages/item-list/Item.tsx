@@ -12,7 +12,7 @@ const Item = () => {
   const navigate = useNavigate();
 
   const handleAddToCart = () => {
-    dispatch(addToCart({ id, quantity: 1 }));
+    dispatch(addToCart({ ...product, quantity: 1 }));
     navigate("/item-list");
   };
 
