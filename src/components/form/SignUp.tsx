@@ -1,4 +1,3 @@
-import GoogleIcon from "@mui/icons-material/Google";
 import { useNavigate } from "react-router-dom";
 import SignInPic from "./../../assets/signin_pic.jpg";
 
@@ -12,6 +11,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
 import { config } from "../../config/config";
 import { SignupType } from "../../types/auth";
@@ -135,23 +136,22 @@ const Signup = ({ open, setOpen }: Props) => {
           >
             Sign Up
           </Button>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              border: "2px solid black",
-              p: 1,
-              borderRadius: 20,
-              mb: 2,
-              width: "100%",
-              cursor: "pointer",
-            }}
-          >
-            <GoogleIcon sx={{ fontSize: 30, mr: 2 }} />
-            <Typography sx={{ fontWeight: "bold" }}>
-              Signin with Google
-            </Typography>
+          <Box sx={{ m: 2 }}>
+            <GoogleLogin
+              shape="pill"
+              size="large"
+              width={300}
+              onSuccess={(credentialResponse) => {
+                console.log("Credential response: ", credentialResponse);
+                const decoded = jwtDecode(
+                  credentialResponse.credential as string
+                );
+                console.log(decoded);
+              }}
+              onError={() => {
+                console.log("Login failed.");
+              }}
+            />
           </Box>
         </Box>
         <Box>
