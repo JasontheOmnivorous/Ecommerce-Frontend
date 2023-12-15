@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import WelcomePic from "./assets/welcome_pic.jpg";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./main.css";
 
 const App = () => {
