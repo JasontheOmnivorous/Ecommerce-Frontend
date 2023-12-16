@@ -55,9 +55,7 @@ const Signup = ({ open, setOpen }: Props) => {
     <Dialog maxWidth="md" open={open} onClose={() => setOpen(false)}>
       <Login loginOpen={loginOpen} setLoginOpen={setLoginOpen} />
       <DialogTitle sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography sx={{ fontWeight: "bold" }} variant="h4">
-          Signin
-        </Typography>
+        <Typography sx={{ fontWeight: "bold" }}>Signin</Typography>
         <Button
           onClick={() => setLoginOpen(true)}
           sx={{
