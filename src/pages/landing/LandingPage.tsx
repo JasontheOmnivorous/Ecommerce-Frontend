@@ -1,37 +1,16 @@
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
-import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import SearchIcon from "@mui/icons-material/Search";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Card, Typography } from "@mui/material";
 import { useState } from "react";
 import Signup from "../../components/form/SignUp";
 import HoodiePic from "./../../assets/hoodie-pic.jpg";
 import PairTrainers from "./../../assets/pair-trainers.jpg";
-import UserFeedback1 from "./../../assets/userFeedback1.jpg";
-import UserFeedback2 from "./../../assets/userFeedback2.jpg";
-import UserFeedback3 from "./../../assets/userFeedback3.jpg";
+
+import ControlledCarousel from "../../components/carousel/Carousel";
 
 const LandingPage = () => {
   const [search, setSearch] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
-  const [carouselIndex, setCarouselndex] = useState<number>(0);
-
-  const images = [UserFeedback1, UserFeedback2, UserFeedback3];
-
-  const handlePrevClick = () => {
-    setCarouselndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
-
-  const handleNextClick = () => {
-    setCarouselndex((next) => (next === images.length - 1 ? 0 : next + 1));
-  };
 
   return (
     <Box>
@@ -168,7 +147,7 @@ const LandingPage = () => {
         >
           <Card
             sx={{
-              width: 800,
+              width: 630,
               height: "auto",
               display: "flex",
               flexDirection: "column",
@@ -177,33 +156,7 @@ const LandingPage = () => {
               boxShadow: 3,
             }}
           >
-            <CardHeader title="Customer Feedbacks" />
-            <CardContent>
-              <img src={images[carouselIndex]} alt="user-feedback" />
-            </CardContent>
-            <CardActions>
-              <Button
-                onClick={handleNextClick}
-                sx={{ ":hover": { borderRadius: "50%" } }}
-                color="error"
-              >
-                <RadioButtonUncheckedIcon sx={{ fontSize: 20 }} />
-              </Button>
-              <Button
-                onClick={handlePrevClick}
-                sx={{ ":hover": { borderRadius: "50%" } }}
-                color="error"
-              >
-                <RadioButtonUncheckedIcon sx={{ fontSize: 20 }} />
-              </Button>
-              <Button
-                onClick={handleNextClick}
-                sx={{ ":hover": { borderRadius: "50%" } }}
-                color="error"
-              >
-                <RadioButtonUncheckedIcon sx={{ fontSize: 20 }} />
-              </Button>
-            </CardActions>
+            <ControlledCarousel />
           </Card>
         </Box>
       </Box>
