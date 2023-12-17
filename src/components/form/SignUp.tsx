@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import SignInPic from "./../../assets/signin_pic.jpg";
 
-import { LinkedIn, Twitter } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -11,8 +10,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { GoogleLogin } from "@react-oauth/google";
-import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
 import { config } from "../../config/config";
 import { SignupType } from "../../types/auth";
@@ -134,63 +131,6 @@ const Signup = ({ open, setOpen }: Props) => {
           >
             Sign Up
           </Button>
-          <Box sx={{ m: 2 }}>
-            <GoogleLogin
-              shape="pill"
-              size="large"
-              width={300}
-              onSuccess={(credentialResponse) => {
-                console.log("Credential response: ", credentialResponse);
-                const decoded = jwtDecode(
-                  credentialResponse.credential as string
-                );
-                console.log(decoded);
-              }}
-              onError={() => {
-                console.log("Login failed.");
-              }}
-            />
-          </Box>
-        </Box>
-        <Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              border: "2px solid black",
-              p: 1,
-              borderRadius: 20,
-              mb: 2,
-              width: "100%",
-              cursor: "pointer",
-            }}
-          >
-            <Twitter sx={{ fontSize: 30, mr: 2 }} />
-            <Typography sx={{ fontWeight: "bold", cursor: "pointer" }}>
-              Signin with Twitter
-            </Typography>
-          </Box>
-        </Box>
-        <Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              border: "2px solid black",
-              p: 1,
-              borderRadius: 20,
-              mb: 2,
-              width: "100%",
-              cursor: "pointer",
-            }}
-          >
-            <LinkedIn sx={{ fontSize: 30, mr: 2 }} />
-            <Typography sx={{ fontWeight: "bold", cursor: "pointer" }}>
-              Signin with LinkedIn
-            </Typography>
-          </Box>
         </Box>
       </DialogContent>
     </Dialog>
