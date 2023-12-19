@@ -1,11 +1,23 @@
 import { AddCircle, MonetizationOn, RemoveCircle } from "@mui/icons-material";
-import { Box, Button, Card, CardContent, Typography } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Snackbar,
+  Typography,
+} from "@mui/material";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { updateQuantity } from "../../store/slices/cartSlice";
 
 const CartPage = () => {
+  const [open, setOpen] = useState<boolean>(false);
   const cartItems = useAppSelector((store) => store.cart.items);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleIncrease = (_id: string, quantity: number) => {
     dispatch(updateQuantity({ _id, quantity }));
@@ -19,6 +31,13 @@ const CartPage = () => {
     let totalPrice = 0;
     cartItems.forEach((item) => (totalPrice += item.price * item.quantity));
     return totalPrice;
+  };
+
+  const handleConfirmOrder = () => {
+    setOpen(true);
+    setTimeout(() => {
+      navigate("/item-list");
+    }, 3000);
   };
 
   if (!cartItems)
@@ -112,9 +131,22 @@ const CartPage = () => {
         <Typography sx={{ fontWeight: "bold", m: 2 }}>
           Total Price: {calcTotalPrice()}
         </Typography>
-        <Button sx={{ m: 2 }} variant="contained">
+        <Button onClick={handleConfirmOrder} sx={{ m: 2 }} variant="contained">
           confirm order
         </Button>
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={() => setOpen(false)}
+        >
+          <Alert
+            onClose={() => setOpen(false)}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Ordered successfully!
+          </Alert>
+        </Snackbar>
       </Box>
     </Box>
   );
