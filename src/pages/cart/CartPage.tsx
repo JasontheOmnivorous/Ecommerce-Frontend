@@ -15,10 +15,33 @@ const CartPage = () => {
     dispatch(updateQuantity({ _id, quantity }));
   };
 
-  if (!cartItems) return null;
+  const calcTotalPrice = () => {
+    let totalPrice = 0;
+    cartItems.forEach((item) => (totalPrice += item.price * item.quantity));
+    return totalPrice;
+  };
+
+  if (!cartItems)
+    return (
+      <Box
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      >
+        <Typography sx={{ fontWeight: "bold" }}>
+          Please add some items first...
+        </Typography>
+      </Box>
+    );
 
   return (
-    <Box sx={{ width: "100vw" }}>
+    <Box
+      sx={{
+        width: "100vw",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Box>
         {cartItems.map((item) => (
           <Box
@@ -77,7 +100,22 @@ const CartPage = () => {
           </Box>
         ))}
       </Box>
-      <Box></Box>
+      <Box
+        sx={{
+          m: 4,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Typography sx={{ fontWeight: "bold", m: 2 }}>
+          Total Price: {calcTotalPrice()}
+        </Typography>
+        <Button sx={{ m: 2 }} variant="contained">
+          confirm order
+        </Button>
+      </Box>
     </Box>
   );
 };
