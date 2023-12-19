@@ -13,13 +13,25 @@ function ControlledCarousel() {
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
-        <img src={UserFeedback1} alt="userfeedback1" />
+        <img
+          style={{ width: 630, height: 220 }}
+          src={UserFeedback1}
+          alt="userfeedback1"
+        />
       </Carousel.Item>
       <Carousel.Item>
-        <img src={UserFeedback2} alt="userfeedback2" />
+        <img
+          style={{ width: 630, height: 220 }}
+          src={UserFeedback2}
+          alt="userfeedback2"
+        />
       </Carousel.Item>
       <Carousel.Item>
-        <img src={UserFeedback3} alt="userfeedback3" />
+        <img
+          style={{ width: 630, height: 220 }}
+          src={UserFeedback3}
+          alt="userfeedback3"
+        />
       </Carousel.Item>
     </Carousel>
   );

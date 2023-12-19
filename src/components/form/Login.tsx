@@ -8,9 +8,9 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { config } from "../../config/config";
 import { LoginType } from "../../types/auth";
-import { useNavigate } from "react-router-dom";
 
 interface Props {
   loginOpen: boolean;
@@ -41,7 +41,7 @@ const Login = ({ loginOpen, setLoginOpen }: Props) => {
   return (
     <Dialog open={loginOpen} onClose={() => setLoginOpen(false)}>
       <DialogTitle sx={{ display: "flex", justifyContent: "center" }}>
-        <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+        <Typography sx={{ fontWeight: "bold" }}>
           Login
         </Typography>
       </DialogTitle>
