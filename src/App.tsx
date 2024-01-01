@@ -2,16 +2,43 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import StarPurple500Icon from "@mui/icons-material/StarPurple500";
 import { Box, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
-import WelcomePic from "./assets/welcome_pic.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
+import PairTrainers from "./assets/pair-trainers.jpg";
+import WelcomePic from "./assets/welcome_pic.jpg";
+import ControlledCarousel from "./components/carousel/Carousel";
 import "./main.css";
 
 const App = () => {
   return (
     <Box>
-      <section className="Home">
-        {/* body part */}
+      <section
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: 20,
+        }}
+        className="Home"
+      >
+        {/* shoes */}
+        <Box sx={{ margin: 5 }}>
+          <Typography
+            sx={{ color: "gold", textShadow: "2px 2px gray" }}
+            variant="h3"
+          >
+            Shoes for your next advanture
+          </Typography>
+          <img
+            style={{ width: "400px", height: "400px" }}
+            src={PairTrainers || ""}
+            alt="sneakers"
+          />
+        </Box>
+        {/* carousel */}
+        <ControlledCarousel />
+        {/* explore */}
         <Box
           className="Text"
           sx={{
@@ -19,6 +46,7 @@ const App = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            margin: 5,
           }}
         >
           <Typography variant="h4">

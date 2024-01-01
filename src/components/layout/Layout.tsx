@@ -1,14 +1,12 @@
 import { ShoppingCart } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import HomeIcon from "@mui/icons-material/Home";
-import InfoIcon from "@mui/icons-material/Info";
-import PhoneForwardedIcon from "@mui/icons-material/PhoneForwarded";
 import { Box, Button, Typography } from "@mui/material";
 import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 import Signup from "../form/SignUp";
-import Logo from "./../../assets/logo.jpg";
+import Logo from "./../../assets/logo.png";
 
 interface Props {
   children: ReactNode;
@@ -55,14 +53,6 @@ const Layout = ({ children }: Props) => {
           <FormatListBulletedIcon sx={{ fontSize: 60, color: "#8b0000" }} />
         </Link>
 
-        <Link to="/about">
-          <InfoIcon sx={{ fontSize: 50, color: "#8b0000" }} />
-        </Link>
-
-        <Link to="/contact">
-          <PhoneForwardedIcon sx={{ fontSize: 50, color: "#8b0000" }} />
-        </Link>
-
         <Link style={{ textDecoration: "none" }} to="/cart">
           <Box
             sx={{
@@ -87,7 +77,7 @@ const Layout = ({ children }: Props) => {
         </Link>
         <Button
           onClick={() => setOpen(true)}
-          sx={{ bgcolor: "#8b0000", ":hover": { bgcolor: "pink" } }}
+          sx={{ bgcolor: "#8b0000", ":hover": { bgcolor: "crimson" } }}
           variant="contained"
         >
           Signup
