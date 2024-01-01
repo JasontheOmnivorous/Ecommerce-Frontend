@@ -13,6 +13,7 @@ import {
 import { useState } from "react";
 import { config } from "../../config/config";
 import { SignupType } from "../../types/auth";
+import PasswordField from "../../utils/PasswordField";
 import Login from "./Login";
 
 interface Props {
@@ -42,7 +43,9 @@ const Signup = ({ open, setOpen }: Props) => {
       const token = await responseObj.json();
       // store responded token inside localstorage for further usage
       localStorage.setItem("authToken", token.token);
-      navigate("/home"); // nevigate the user to the home page after signing up
+      navigate("/item-list"); // nevigate the user to the home page after signing up
+      setOpen(false);
+      setLoginOpen(false);
     } catch (err) {
       return console.log(err);
     }
@@ -50,7 +53,11 @@ const Signup = ({ open, setOpen }: Props) => {
 
   return (
     <Dialog maxWidth="md" open={open} onClose={() => setOpen(false)}>
-      <Login loginOpen={loginOpen} setLoginOpen={setLoginOpen} />
+      <Login
+        loginOpen={loginOpen}
+        setLoginOpen={setLoginOpen}
+        setOpen={setOpen}
+      />
       <DialogTitle sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography sx={{ fontWeight: "bold" }}>Signin</Typography>
         <Button
@@ -88,17 +95,13 @@ const Signup = ({ open, setOpen }: Props) => {
                 setSignin({ ...signin, email: event.target.value })
               }
             />
-            <TextField
-              variant="standard"
-              sx={{ width: 300, m: 2 }}
+            <PasswordField
               placeholder="Password"
               onChange={(event) =>
                 setSignin({ ...signin, password: event.target.value })
               }
             />
-            <TextField
-              variant="standard"
-              sx={{ width: 300, m: 2 }}
+            <PasswordField
               placeholder="Please confirm your password..."
               onChange={(event) =>
                 setSignin({ ...signin, passwordConfirm: event.target.value })

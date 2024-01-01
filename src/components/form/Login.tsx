@@ -11,13 +11,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { config } from "../../config/config";
 import { LoginType } from "../../types/auth";
+import PasswordField from "../../utils/PasswordField";
 
 interface Props {
   loginOpen: boolean;
   setLoginOpen: (val: boolean) => void;
+  setOpen: (val: boolean) => void;
 }
 
-const Login = ({ loginOpen, setLoginOpen }: Props) => {
+const Login = ({ loginOpen, setLoginOpen, setOpen }: Props) => {
   const [login, setLogin] = useState<LoginType>({ email: "", password: "" });
   const navigate = useNavigate();
 
@@ -32,7 +34,9 @@ const Login = ({ loginOpen, setLoginOpen }: Props) => {
       });
       const token = await responseObj.json();
       localStorage.setItem("authToken", token.token);
-      navigate("/home");
+      navigate("/item-list");
+      setLoginOpen(false);
+      setOpen(false);
     } catch (err) {
       return console.log(err);
     }
@@ -41,9 +45,7 @@ const Login = ({ loginOpen, setLoginOpen }: Props) => {
   return (
     <Dialog open={loginOpen} onClose={() => setLoginOpen(false)}>
       <DialogTitle sx={{ display: "flex", justifyContent: "center" }}>
-        <Typography sx={{ fontWeight: "bold" }}>
-          Login
-        </Typography>
+        <Typography sx={{ fontWeight: "bold" }}>Login</Typography>
       </DialogTitle>
       <DialogContent
         sx={{
@@ -58,16 +60,14 @@ const Login = ({ loginOpen, setLoginOpen }: Props) => {
             setLogin({ ...login, email: event.target.value })
           }
           variant="standard"
-          sx={{ m: 2, width: 300 }}
+          sx={{ m: 2, width: 360 }}
           placeholder="Email"
         />
-        <TextField
+        <PasswordField
+          placeholder="Password"
           onChange={(event) =>
             setLogin({ ...login, password: event.target.value })
           }
-          variant="standard"
-          sx={{ m: 2, width: 300 }}
-          placeholder="Password"
         />
         <DialogActions>
           <Button
