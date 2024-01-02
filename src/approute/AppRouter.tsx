@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "../App";
 import Layout from "../components/layout/Layout";
+import AuthGuard from "../pages/authGuard/AuthGuard";
 import CartPage from "../pages/cart/CartPage";
 import ItemListPage from "../pages/item-list/ItemListPage";
 import Item from "./../pages/item-list/Item";
@@ -20,25 +21,31 @@ const AppRouter = () => {
         <Route
           path="/item-list"
           element={
-            <Layout>
-              <ItemListPage />
-            </Layout>
+            <AuthGuard>
+              <Layout>
+                <ItemListPage />
+              </Layout>
+            </AuthGuard>
           }
         />
         <Route
           path="/item-list/:id"
           element={
-            <Layout>
-              <Item />
-            </Layout>
+            <AuthGuard>
+              <Layout>
+                <Item />
+              </Layout>
+            </AuthGuard>
           }
         />
         <Route
           path="/cart"
           element={
-            <Layout>
-              <CartPage />
-            </Layout>
+            <AuthGuard>
+              <Layout>
+                <CartPage />
+              </Layout>
+            </AuthGuard>
           }
         />
       </Routes>
