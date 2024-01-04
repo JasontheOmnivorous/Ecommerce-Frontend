@@ -3,7 +3,7 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import HomeIcon from "@mui/icons-material/Home";
 import { Box, Button, Typography } from "@mui/material";
 import { ReactNode, lazy, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 import Logo from "./../../assets/logo.png";
 const Signup = lazy(() => import("./../form/SignUp"));
@@ -15,11 +15,21 @@ interface Props {
 const Layout = ({ children }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const cartItems = useAppSelector((store) => store.cart.items);
+  const isAuthenticated = localStorage.getItem("authToken");
+  const navigate = useNavigate();
 
   const calcQauntity = () => {
     let quantity = 0;
     cartItems.forEach((item) => (quantity += item.quantity));
     return quantity;
+  };
+
+  const handleSignupSignout = () => {
+    setOpen(!open);
+    if (isAuthenticated) {
+      localStorage.removeItem("authToken");
+      navigate("/");
+    }
   };
 
   return (
@@ -76,11 +86,11 @@ const Layout = ({ children }: Props) => {
           </Box>
         </Link>
         <Button
-          onClick={() => setOpen(true)}
+          onClick={handleSignupSignout}
           sx={{ bgcolor: "#8b0000", ":hover": { bgcolor: "crimson" } }}
           variant="contained"
         >
-          Signup
+          {isAuthenticated ? "sign out" : "sign up"}
         </Button>
         <Signup open={open} setOpen={setOpen} />
       </Box>
