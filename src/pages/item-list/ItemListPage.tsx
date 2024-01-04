@@ -23,7 +23,7 @@ const ItemListPage = () => {
       }}
     >
       {products?.map((product) => (
-        <ItemCard key={product._id} product={product} />
+        <ItemCard product={product} />
       ))}
     </Box>
   );

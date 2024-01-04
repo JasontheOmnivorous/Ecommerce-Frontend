@@ -1,11 +1,12 @@
-import { ReactNode } from "react";
+import { Box, CircularProgress } from "@mui/material";
+import { ReactNode, Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import App from "../App";
 import Layout from "../components/layout/Layout";
 import AuthGuard from "../pages/authGuard/AuthGuard";
-import CartPage from "../pages/cart/CartPage";
-import ItemListPage from "../pages/item-list/ItemListPage";
-import Item from "./../pages/item-list/Item";
+const App = lazy(() => import("./../App"));
+const ItemListPage = lazy(() => import("./../pages/item-list/ItemListPage"));
+const CartPage = lazy(() => import("./../pages/cart/CartPage"));
+const Item = lazy(() => import("./../pages/item-list/Item"));
 
 interface Props {
   id: number;
@@ -40,9 +41,26 @@ const AppRouter = () => {
         <Route
           path="/"
           element={
-            <Layout>
-              <App />
-            </Layout>
+            <Suspense
+              fallback={
+                <Box
+                  sx={{
+                    width: "100vw",
+                    height: "100vh",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <CircularProgress color="inherit" />
+                </Box>
+              }
+            >
+              <Layout>
+                <App />
+              </Layout>
+            </Suspense>
           }
         />
         {routes.map((item) => generateRoute(item))}

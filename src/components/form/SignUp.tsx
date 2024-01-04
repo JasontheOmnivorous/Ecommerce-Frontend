@@ -4,17 +4,18 @@ import SignInPic from "./../../assets/signin_pic.jpg";
 import {
   Box,
   Button,
+  CircularProgress,
   Dialog,
   DialogContent,
   DialogTitle,
   TextField,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import { config } from "../../config/config";
 import { SignupType } from "../../types/auth";
 import PasswordField from "../../utils/PasswordField";
-import Login from "./Login";
+const Login = lazy(() => import("./../form/Login"));
 
 interface Props {
   open: boolean;
@@ -53,11 +54,13 @@ const Signup = ({ open, setOpen }: Props) => {
 
   return (
     <Dialog maxWidth="md" open={open} onClose={() => setOpen(false)}>
-      <Login
-        loginOpen={loginOpen}
-        setLoginOpen={setLoginOpen}
-        setOpen={setOpen}
-      />
+      <Suspense fallback={<CircularProgress color="inherit" />}>
+        <Login
+          loginOpen={loginOpen}
+          setLoginOpen={setLoginOpen}
+          setOpen={setOpen}
+        />
+      </Suspense>
       <DialogTitle sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography sx={{ fontWeight: "bold" }}>Signin</Typography>
         <Button

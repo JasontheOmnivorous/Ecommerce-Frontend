@@ -2,11 +2,11 @@ import { ShoppingCart } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import HomeIcon from "@mui/icons-material/Home";
 import { Box, Button, Typography } from "@mui/material";
-import { ReactNode, useState } from "react";
+import { ReactNode, lazy, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
-import Signup from "../form/SignUp";
 import Logo from "./../../assets/logo.png";
+const Signup = lazy(() => import("./../form/SignUp"));
 
 interface Props {
   children: ReactNode;
