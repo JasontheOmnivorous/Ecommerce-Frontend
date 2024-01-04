@@ -40,14 +40,26 @@ const CartPage = () => {
     }, 3000);
   };
 
-  if (!cartItems)
+  if (cartItems.length <= 0)
     return (
       <Box
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-        <Typography sx={{ fontWeight: "bold" }}>
+        <Typography sx={{ fontWeight: "bold", margin: 2 }}>
           Please add some items first...
         </Typography>
+        <Button
+          onClick={() => navigate("/item-list")}
+          sx={{ margin: 2 }}
+          variant="outlined"
+        >
+          ← Add items
+        </Button>
       </Box>
     );
 

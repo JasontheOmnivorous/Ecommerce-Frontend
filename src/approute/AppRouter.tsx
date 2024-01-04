@@ -27,9 +27,11 @@ const AppRouter = () => {
         key={id}
         path={path}
         element={
-          <AuthGuard>
-            <Layout>{component}</Layout>
-          </AuthGuard>
+          <Suspense fallback={<CircularProgress color="inherit" />}>
+            <AuthGuard>
+              <Layout>{component}</Layout>
+            </AuthGuard>
+          </Suspense>
         }
       />
     );
