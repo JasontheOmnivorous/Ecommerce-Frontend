@@ -3,10 +3,10 @@ import { ReactNode, Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 import AuthGuard from "../pages/authGuard/AuthGuard";
+import Item from "./../pages/item-list/Item";
 const App = lazy(() => import("./../App"));
 const ItemListPage = lazy(() => import("./../pages/item-list/ItemListPage"));
 const CartPage = lazy(() => import("./../pages/cart/CartPage"));
-const Item = lazy(() => import("./../pages/item-list/Item"));
 
 interface Props {
   id: number;

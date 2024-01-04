@@ -39,7 +39,11 @@ const Item = () => {
       />
       <Typography sx={{ p: 2 }}>{product?.description}</Typography>
       <Box
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
         <MonetizationOn sx={{ fontSize: 30, color: "green" }} />
         <Typography sx={{ fontWeight: "bold" }}>{product?.price}</Typography>
