@@ -25,7 +25,7 @@ const AuthGuard = ({ children }: Props) => {
           Unauthorized!
         </Typography>
         <Typography sx={{ m: 2 }}>
-          Please sing in first to use the app...
+          Please sign in first to use the app...
         </Typography>
         <Button onClick={() => navigate("/")} sx={{ m: 2 }} variant="outlined">
           ← Go back to home page
