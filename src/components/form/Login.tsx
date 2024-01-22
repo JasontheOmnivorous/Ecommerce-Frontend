@@ -33,8 +33,8 @@ const Login = ({ loginOpen, setLoginOpen, setOpen }: Props) => {
         },
         body: JSON.stringify(login),
       });
-      const token = await responseObj.json();
-      Cookies.set("authToken", token, {
+      const response = await responseObj.json();
+      Cookies.set("authToken", response.token, {
         expires: 7,
         secure: true,
         sameSite: "strict",

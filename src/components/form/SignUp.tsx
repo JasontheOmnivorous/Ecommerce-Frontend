@@ -42,9 +42,9 @@ const Signup = ({ open, setOpen }: Props) => {
         },
         body: JSON.stringify(signin),
       });
-      const token = await responseObj.json();
+      const response = await responseObj.json();
       // store responded token inside localstorage for further usage
-      Cookies.set("authToken", token, {
+      Cookies.set("authToken", response.token, {
         expires: 7,
         secure: true,
         sameSite: "strict",

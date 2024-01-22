@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import Cookies from "js-cookie";
 import { config } from "../../config/config";
 import { ProductSlice } from "../../types/product";
 
@@ -12,7 +13,7 @@ export const getProducts = createAsyncThunk(
   "product/getProducts",
   async (_, thunkApi) => {
     try {
-      const token = localStorage.getItem("authToken");
+      const token = Cookies.get("authToken");
       const response = await fetch(`${config.apiBaseUrl}/products`, {
         headers: {
           authorization: `Bearer ${token}`,
