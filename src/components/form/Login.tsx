@@ -7,6 +7,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import Cookies from "js-cookie";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { config } from "../../config/config";
@@ -33,7 +34,11 @@ const Login = ({ loginOpen, setLoginOpen, setOpen }: Props) => {
         body: JSON.stringify(login),
       });
       const token = await responseObj.json();
-      localStorage.setItem("authToken", token.token);
+      Cookies.set("authToken", token, {
+        expires: 7,
+        secure: true,
+        sameSite: "strict",
+      });
       navigate("/item-list");
       setLoginOpen(false);
       setOpen(false);

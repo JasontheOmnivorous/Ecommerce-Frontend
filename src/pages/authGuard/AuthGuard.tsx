@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
+import Cookies from "js-cookie";
 import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +8,7 @@ interface Props {
 }
 
 const AuthGuard = ({ children }: Props) => {
-  const isAuthenticated = localStorage.getItem("authToken");
+  const isAuthenticated = Cookies.get("authToken");
   const navigate = useNavigate();
 
   if (!isAuthenticated) {

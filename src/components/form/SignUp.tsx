@@ -11,6 +11,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import Cookies from "js-cookie";
 import { Suspense, lazy, useState } from "react";
 import { config } from "../../config/config";
 import { SignupType } from "../../types/auth";
@@ -43,7 +44,11 @@ const Signup = ({ open, setOpen }: Props) => {
       });
       const token = await responseObj.json();
       // store responded token inside localstorage for further usage
-      localStorage.setItem("authToken", token.token);
+      Cookies.set("authToken", token, {
+        expires: 7,
+        secure: true,
+        sameSite: "strict",
+      });
       navigate("/item-list"); // nevigate the user to the home page after signing up
       setOpen(false);
       setLoginOpen(false);
