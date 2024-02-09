@@ -11,13 +11,16 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { updateQuantity } from "../../store/slices/cartSlice";
+import { clearCart, updateQuantity } from "../../store/slices/cartSlice";
+import { createOrder } from "../../store/slices/orderSlice";
 
 const CartPage = () => {
   const [open, setOpen] = useState<boolean>(false);
   const cartItems = useAppSelector((store) => store.cart.items);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  console.log(cartItems);
 
   const handleIncrease = (_id: string, quantity: number) => {
     dispatch(updateQuantity({ _id, quantity }));
@@ -33,11 +36,22 @@ const CartPage = () => {
     return totalPrice;
   };
 
-  const handleConfirmOrder = () => {
+  const onSuccess = () => {
     setOpen(true);
     setTimeout(() => {
       navigate("/item-list");
+      dispatch(clearCart([]));
     }, 3000);
+  };
+
+  const handleConfirmOrder = () => {
+    dispatch(
+      createOrder({
+        orderItems: cartItems,
+        totalPrice: calcTotalPrice(),
+        onSuccess,
+      })
+    );
   };
 
   if (cartItems.length <= 0)
