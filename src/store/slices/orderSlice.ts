@@ -10,8 +10,21 @@ const initialState: OrderSlice = {
   error: null,
 };
 
+export const getOrders = createAsyncThunk(
+  "cart/getOrders",
+  async (_, thunkApi) => {
+    const response = await fetch(`${config.apiBaseUrl}/orders`, {
+      headers: {
+        authorization: `Bearer ${Cookies.get("authToken")}`,
+      },
+    });
+    const respondedOrders = await response.json();
+    thunkApi.dispatch(setOrderdItems(respondedOrders.orders));
+  }
+);
+
 export const createOrder = createAsyncThunk(
-  "cart/createOrder",
+  "order/createOrder",
   async (options: CreateOrderOptions, thunkApi) => {
     const { orderItems, totalPrice, onSuccess, onError } = options;
 
@@ -25,8 +38,8 @@ export const createOrder = createAsyncThunk(
         body: JSON.stringify({ orderItems, totalPrice }),
       });
       const respondedData = await response.json();
-      console.log(respondedData);
-      thunkApi.dispatch(addOrderedItems(respondedData.data));
+      console.log("in slice: ", respondedData.newOrder);
+      thunkApi.dispatch(addOrderedItems(respondedData.newOrder));
       thunkApi.dispatch(setIsOrdered(true));
 
       onSuccess && onSuccess();
@@ -43,11 +56,15 @@ const orderSlice = createSlice({
     setIsOrdered: (state, action) => {
       state.isOrdered = action.payload;
     },
+    setOrderdItems: (state, action) => {
+      state.items = action.payload;
+    },
     addOrderedItems: (state, action) => {
       state.items = [...state.items, action.payload];
     },
   },
 });
 
-export const { setIsOrdered, addOrderedItems } = orderSlice.actions;
+export const { setIsOrdered, setOrderdItems, addOrderedItems } =
+  orderSlice.actions;
 export default orderSlice.reducer;

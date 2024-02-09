@@ -1,6 +1,7 @@
 import { ShoppingCart } from "@mui/icons-material";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import HomeIcon from "@mui/icons-material/Home";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import { Box, Button, Typography } from "@mui/material";
 import { ReactNode, lazy, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -84,6 +85,9 @@ const Layout = ({ children }: Props) => {
               {calcQauntity()}
             </Typography>
           </Box>
+        </Link>
+        <Link style={{ textDecoration: "none" }} to={"/order"}>
+          <ShoppingBagIcon sx={{ fontSize: 50, color: "#8b0000" }} />
         </Link>
         <Button
           onClick={handleSignupSignout}

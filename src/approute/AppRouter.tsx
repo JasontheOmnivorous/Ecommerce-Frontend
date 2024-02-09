@@ -3,6 +3,7 @@ import { ReactNode, Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 import AuthGuard from "../pages/authGuard/AuthGuard";
+import OrderPage from "../pages/order/OrderPage";
 import Item from "./../pages/item-list/Item";
 const App = lazy(() => import("./../App"));
 const ItemListPage = lazy(() => import("./../pages/item-list/ItemListPage"));
@@ -19,6 +20,7 @@ const AppRouter = () => {
     { id: 1, path: "/item-list", component: <ItemListPage /> },
     { id: 2, path: "/item-list/:id", component: <Item /> },
     { id: 3, path: "/cart", component: <CartPage /> },
+    { id: 4, path: "/order", component: <OrderPage /> },
   ];
 
   const generateRoute = ({ id, path, component }: Props) => {
